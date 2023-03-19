@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+<style>
+    li{
+        word-wrap: normal;
+        margin: 5px;
+    }
+    .btn-close{
+        background-color: red;
+        color: white;
+    }
+    .tik{
+        width: 24px;
+        height: 24px;
+        border-radius: 5px;
+        background-color: rgb(85, 241, 85);
+        opacity: 0.5;
+        margin-left: 5px;
+        border: none;
+        padding: 4px;
+        
+    }
+    .tik:hover{
+        opacity: 5;
+    }
+    
+</style>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card w-50 mt-3">
+                <div class="card-header">
+                    <h5 class="card-title">TODO LİST</h5>
+                </div>
+
+                <div class="card-body">
+                    
+                    
+                        <input type="text" class="form-control" id="todoName">
+                        <button id="AddButton" class="btn btn-primary mt-3" >Ekle</button>
+                        <button id="dellButton" class="btn btn-danger mt-3" >Tümünü Sil</button>
+                 
+                        
+                </div>
+                <hr>
+  
+
+                <div id="liste" >
+                    <ul class="list-group">
+                        
+                      </ul>
+                    
+
+                </div>
+        </div>
+    </div>
+    </div>
+    <script>
+        let input = document.querySelector("#todoName");
+        let button = document.querySelector("#AddButton");
+        let ul = document.querySelector(".list-group")
+        let liste = document.querySelector("#liste")
+        let dels = document.querySelector("#dellButton")
+        let sira = 0
+        button.addEventListener("click", ()=>{
+            if(input.value != ""){
+        
+       
+            
+            let ls = document.createElement("li");
+            let del = document.createElement("button");
+            let tik = document.createElement("button");
+            let dv = document.createElement("div");
+            
+            tik.classList.add("tik");
+            ls.classList.add("list-group-item");
+            del.classList.add("btn-close");
+            ls.style.display = "flex"
+            ls.style.justifyContent = "space-between"
+            liste.appendChild(ul);
+            ul.appendChild(ls); 
+            sira++;
+            ls.innerText = sira + " - " + input.value
+            ls.appendChild(dv);
+            dv.appendChild(del);
+            dv.appendChild(tik)
+            
+            del.addEventListener("click" , () =>{
+                ul.removeChild(ls);
+                sira--;
+              }) 
+            input.value = ""
+        
+         dels.addEventListener("click" , ()=>{
+                liste.removeChild(ul);
+                window.location.reload()
+            })
+
+        tik.addEventListener("click", ()=>{
+            if( ls.style.textDecoration == "line-through 3px rgb(85, 241, 85)" )
+            ls.style.textDecoration ="none"
+           
+            else(
+                ls.style.textDecoration ="line-through 3px rgb(85, 241, 85)"
+            )
+           
+        })
+        }
+           
+        })
+    </script>
+</body>
+</html>
